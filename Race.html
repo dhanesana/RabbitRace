@@ -1,0 +1,51 @@
+<script>
+// defining animal
+	function Animal (name, speed, focus) { 
+		this.name = name; //consructor functions takes parameters
+		// Values: 0 - 9
+		this.speed = speed;
+		this.focus = focus;
+		this.position = 0; 
+		//no need for an imput parameter beause all animals will start at 0
+		//creat a function for isFocused that will return true or false
+		this.isFocused = function() {
+			return Math.floor(Math.random() * 10) < this.focus; 
+			//will grab the focus value of whatever animal
+		}
+		this.advance = function() {
+			if (this.isFocused()) {
+				this.position += this.speed; 
+				// use += because it keeps track of position rather than using 0 everytime
+			}
+		}
+		this.progReport = function() {
+			return this.name + " is at: " + this.position
+		}
+	}
+
+// rabbit is an animal
+
+	var rabbit = new Animal("Rocky", 10, 1);
+	// u can pull this up in ur browsers console
+	// cmd shift D duplicates a line
+	var turtle = new Animal("Myrtle", 2, 9);
+
+	var meters = 100; // finish line is at the 100th meter
+
+//while () this is true, both animals will advance
+// even if it's a tie it won't be true
+	while (rabbit.position < meters && turtle.position < meters) {
+		rabbit.advance();
+		turtle.advance();
+		alert (rabbit.progReport() + " | " + turtle.progReport());
+	}
+/* - More racers?
+
+ - User-entered parameters for the racers?
+
+ - particular types of distractions?
+
+ - Change the racer's focus depending on the gap between them? */
+
+ 
+</script>
