@@ -45,18 +45,18 @@
       }
     }
     this.progReport = function() {
-      return this.name + " is at: " + this.position;
+      return this.name + " has reached: " + this.position + " meters";
     }
   };
 
 // Game Intro 
   alert ("This is Tony Hawk and ur playing Animal Pro Racer 2K15");
-  alert ("Click OK to start a New Game");
+  alert ("Click 'OK' to start a New Game");
 // raceType will determine the length of the race course
   alert ("Select Race Type:");
   alert ("1) Dash: 100m Sprint");
   alert ("2) Pace: 200m Track");
-  alert ("3) Stamina: 300m Long and Boring")
+  alert ("3) Stamina: 300m Endurance Challenge");
     var raceType = prompt ("Dash , Pace , or Stamina").toLowerCase();
     do {
         if (raceType == "dash" || raceType == "pace" || raceType == "stamina") break;  
