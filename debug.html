@@ -1,26 +1,7 @@
 <script>
-  
-  var newGame,
-      capFirst,
-      Animal,
-      raceType,
-      meters,
-      useName,
-      rabName,
-      useReply,
-      coinFlip,
-      useCoin,
-      venue,
-      rabSpeed,
-      rabFocus,
-      useSpeed,
-      useFocus,
-      halfcourse,
-      iono,
-      restart;
 
 // Insert game into a function
-  function newGame() {
+
 // capitalize firt letter of a string. *credit stackoverflow*
   function capFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -35,7 +16,7 @@
     //no need for an imput parameter beause all animals will start at 0
     //creat a function for isFocused that will return true or false
     this.isFocused = function() {
-      return Math.floor(Math.random() * 10 + 1) < this.focus; 
+      return Math.floor(Math.random() * 10) < this.focus; 
       //will grab the focus value of whatever animal
     }
     this.advance = function() {
@@ -45,14 +26,14 @@
       }
     }
     this.progReport = function() {
-      return this.name + " is at: " + this.position;
+      return this.name + " is at: " + this.position
     }
   };
 
 // Game Intro 
   alert ("This is Tony Hawk and ur playing Animal Pro Racer 2K15");
   alert ("Click OK to start a New Game");
-// raceType will determine the length of the race course
+  // raceType will determine the length of the race course
   alert ("Select Race Type:");
   alert ("1) Dash: 100m Sprint");
   alert ("2) Pace: 200m Track");
@@ -78,9 +59,9 @@
   alert ("Welcome to the 200th Annual Animal Race");
   alert ("We are down to our two finalists!");
   alert ("Introducing our challenger...");
-  // prompt user for name
+// prompt user for name
     var useName = capFirst(prompt ("What's your name again? (Limit: 9 Characters)"));
-  // Limit useName to 9 characters
+    // Limit useName to 9 characters
     do {
       if (useName.length <= 9 && useName.length > 0) break;  
       alert ("Character Limit: 1-9 !!");
@@ -95,7 +76,7 @@
 // prompt user for com opponent's name
     var rabName = capFirst(prompt ("Insert the name of your archnemesis"));
 
-  // Limit rabName to 9 characters
+    // Limit rabName to 9 characters
     do {
       if (rabName.length <= 9 && rabName.length > 0) break;  
       alert ("Character Limit: 1-9 !!");
@@ -120,15 +101,15 @@
     if (useReply == "yes") {
       alert (useName + " : '" + " ... '");
       alert (rabName + " : '" + " heh loser *stupid smirk* '");
-      useFoc1 = 2;
+      useFoc1 = 3;
       useSpd1 = -1;
-      rabSpd1 = -1;
-      rabFoc1 = 2;
+      rabSpd1 = -2;
+      rabFoc1 = 1;
     } else {
       alert (useName + " : '" + " Who u talkin to long ears? '");
       alert (rabName + " : '" + " ( o`__'o# ) '");
-      useFoc1 = -2;
-      useSpd1 = 1;
+      useFoc1 = -1;
+      useSpd1 = 2;
       rabSpd1 = 2;
       rabFoc1 = -1;
     };
@@ -136,7 +117,7 @@
 // 2 Venues: One favors user and the other favors com
 // User flips a coin to determine venue
 
-  coinFlip = Math.floor(Math.random() * 100 + 1);
+  coinFlip = Math.floor(Math.random() * 100);
 
     if (coinFlip > 50) {
       coin = "heads";
@@ -157,7 +138,7 @@
     // Advantageous venue is chosen if user wins coin toss
       if (useCoin == coin) {
         venue = "River Bank";
-        useSpd2 = 2;
+        useSpd2 = 3;
         rabSpd2 = 0;
       } else {
         venue = "Desert";
@@ -182,100 +163,62 @@
     var rabSpeed = 5 + rabSpd1 + rabSpd2;
     var rabFocus = 2 + rabFoc1;
     var rabbit = new Animal(rabName, rabSpeed, rabFocus);
-    alert (rabbit.name + " Stats: " + "Speed - " + rabbit.speed + " " + "Focus - " + rabbit.focus);
+    alert (rabbit.name + " " + rabbit.speed + " " + rabbit.focus);
   // user aka turtle
     var useSpeed = 2 + useSpd1 + useSpd2;
     var useFocus = 5 + useFoc1;
     var turtle = new Animal(useName, useSpeed, useFocus);
-    alert (turtle.name + " Stats: " + "Speed - " + turtle.speed + " " + "Focus - " + turtle.focus);
+    alert (turtle.name + " " + turtle.speed + " " + turtle.focus);
 
   alert ("On your marks .. Get set ..");
-  alert (" ...... ");
-  alert (" .......... ");
+  alert (rabbit.name + " : '" + " Eat my dust! '");
   alert ("GO!");
 
-// Simulate Race!
+  // Simulate Race!
   var halfcourse = meters/2;
-  var cond1 = true
-  var cond2 = true
+  var iono = true
 
   while (rabbit.position < meters && turtle.position < meters) {
     rabbit.advance();
     turtle.advance();
-    while (cond1 && venue == "Desert") {
+    while (iono && venue == "Desert") {
       alert ("aaaaand we're off!");
       alert (turtle.name + " : '" + " I wish there was air conditioning in this old shell... '");
       alert (rabbit.name + " : '" + " Eat my dust! '");
-      cond1 = false;
+      iono = false;
     }
-    while (cond1 && venue == "River") {
+    while (iono && venue == "River Bank") {
       alert ("aaaaand we're off!");
       alert (turtle.name + " leaps in the river and takes off!");
-      cond1 = false;
+      iono = false;
     }
+    // Alerts the contestants' individual progress
     alert (rabbit.progReport() + " | " + turtle.progReport());
-      while (cond2 && rabbit.position >= halfcourse && rabbit.position > turtle.position) {
+    // Different events depending on who reaches the halfway point first
+      while (iono && rabbit.position >= halfcourse && rabbit.position > turtle.position) {
       turtle.speed += 3;
       alert ("What do we have here?!...");
       alert (".." + turtle.name + " IS TAKING OFF HIS SHELL!");
-      alert (" Cutscene: " + turtle.name + " takes off his shell and he's swole as hell ");
+      alert ("Cutscene: " + turtle.name + " takes off his shell and he's swole as hell");
       alert (turtle.name + " : '" + " F*** THIS SHELL! I AIN'T LOSING '");
-      alert (turtle.name + " Speed: +3 ");
-      cond2 = false;
+      alert (turtle.name + " - Speed: " + turtle.speed);
+      iono = false;     
     }
-      while (cond2 && turtle.position >= halfcourse && turtle.position > rabbit.position) {
+      while (iono && turtle.position >= halfcourse && turtle.position > turtle.position) {
       rabbit.focus += 3;
       alert (turtle.name + " is across the halfway point!");
       alert (rabbit.name + " : ' No way I'm losing to this chump! '");
-      alert (turtle.name + " Focus: +3 ");
-      cond2 = false;
+      alert (turtle.name + " - Focus: " + turtle.focus);
+      iono = false;
+    
     }
-      if (rabbit.position >= meters && rabbit.position > turtle.position) {
-        alert ("Ladies and gentlemen, The race is over!");
-        alert (".. and the winner is ...");
-        alert (rabbit.name + "!!");
-        alert ("* crowd boos *");
-        alert (turtle.name + " slowly crosses the finish line ..");
-        alert (rabbit.name + " : ' What took you so long? HAHA! '");
-        alert ("GG U LOSE");
-      restart = prompt ("U WAN PLAY AGAIN?").toLowerCase(); 
-      }
-      else if (turtle.position >= meters && turtle.position > rabbit.position) {
-        alert (".. and the winner is ...");
-        alert (turtle.name + "!!");
-        alert ("* crowd cheers *");
-        alert (rabbit.name + " crawls across the finish line ..");
-        alert (turtle.name + " : ' AHA! IN UR FACE LOSER! '");
-        alert ("GG U WIN");
-      restart = prompt ("U WAN PLAY AGAIN?").toLowerCase(); 
-      }
-      else if ((turtle.position >= meters && turtle.position == rabbit.position)) {
-        alert (".. and the winner is ...");
-        alert (" ..... ");
-        alert (" IT'S A TIE! IONO HOW THIS HAPPENED THO ");
-        alert (" (super exclusive endgame cutscene) ");
-      restart = prompt ("U WAN PLAY AGAIN?").toLowerCase(); 
-      };
   };
+/* - add sum more racers or sumn
 
-  do {
-    if (restart == "yes" || restart == "no") break;  
-    alert ("IT'S SIMPLE YES OR NO QUESTION DUMMY");
-    var restart = prompt ("Type 'YES' or 'NO'").toLowerCase();
-    if (restart == "yes" || restart == "no") break;        
-    }
-    while (restart !== "yes" || restart !== "no");
+ - mayb user entered racer parameters
 
-  if (restart == "yes") {
-    alert ("COOL LEMME RESTART")
-    alert ("....restarting....");
-    newGame();
-  } else {
-      alert ("AIIT");
-    };
+ - mayb add particular types of distractors? could do this.isDistracted() cause of some rabDist or turtDist
 
- };
-
-  newGame()
+ - change racer focus when they losing or winning maybe iono maybe add confidence lvl
  
 </script>
