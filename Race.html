@@ -24,7 +24,7 @@
 // capitalize firt letter of a string. *credit stackoverflow*
   function capFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  }
 // defining animal
   function Animal (name, speed, focus) { 
     this.name = name; //consructor functions takes parameters
@@ -37,17 +37,17 @@
     this.isFocused = function() {
       return Math.floor(Math.random() * 10 + 1) < this.focus; 
       //will grab the focus value of whatever animal
-    }
+    };
     this.advance = function() {
       if (this.isFocused()) {
         this.position += this.speed; 
         // use += because it keeps track of position rather than using 0 everytime
       }
-    }
+    };
     this.progReport = function() {
       return this.name + " has reached: " + this.position + " meters";
-    }
-  };
+    };
+  }
 
 // Game Intro 
   alert ("This is Tony Hawk and ur playing Animal Pro Racer 2K15");
@@ -73,7 +73,7 @@
     } else {
       meters = 300;
     }
-  alert ("You've selected Race Type: " + capFirst(raceType))
+  alert ("You've selected Race Type: " + capFirst(raceType));
   alert (".. Loading Game ..");
   alert ("Welcome to the 200th Annual Animal Race");
   alert ("We are down to our two finalists!");
@@ -131,7 +131,7 @@
       useSpd1 = 1;
       rabSpd1 = 2;
       rabFoc1 = -1;
-    };
+    }
 
 // 2 Venues: One favors user and the other favors com
 // User flips a coin to determine venue
@@ -142,9 +142,9 @@
       coin = "heads";
     } else {
       coin = "tails";
-    };
+    }
 
-  alert ("We will now flip a coin to decide the location of our final race!")
+  alert ("We will now flip a coin to decide the location of our final race!");
     var useCoin = prompt (capFirst(useName) + "! " + "Call it in the air! " + "Heads or Tails?").toLowerCase();
     // make sure they only enter "heads" or "tails"
       do {
@@ -163,7 +163,7 @@
         venue = "Desert";
         useSpd2 = 0;
         rabSpd2 = 2;
-      };
+      }
 
   alert (useName + " chooses " + useCoin.toUpperCase() + " and " + "it lands on " + coin.toUpperCase());
   alert ("The final race will be held at ... ");
@@ -174,7 +174,7 @@
       } else {
         alert (useName + ":'" + " *gulp* '");
         alert (rabName + ":'" + " ahhh ... the sun feels GREAT! '");
-      };
+      }
 
   alert ("Contestants report to the starting line!");
 
@@ -196,8 +196,8 @@
 
 // Simulate Race!
   var halfcourse = meters/2;
-  var cond1 = true
-  var cond2 = true
+  var cond1 = true;
+  var cond2 = true;
 
   while (rabbit.position < meters && turtle.position < meters) {
     rabbit.advance();
@@ -251,13 +251,14 @@
       restart = prompt ("U WAN PLAY AGAIN?").toLowerCase(); 
       }
       else if ((turtle.position >= meters && turtle.position == rabbit.position)) {
+        alert ("Ladies and gentlemen, The race is over!");
         alert (".. and the winner is ...");
         alert (" ..... ");
         alert (" IT'S A TIE! IONO HOW THIS HAPPENED THO ");
         alert (" (super exclusive endgame cutscene) ");
       restart = prompt ("U WAN PLAY AGAIN?").toLowerCase(); 
-      };
-  };
+      }
+  }
 
   do {
     if (restart == "yes" || restart == "no") break;  
@@ -268,12 +269,12 @@
     while (restart !== "yes" || restart !== "no");
 
   if (restart == "yes") {
-    alert ("COOL LEMME RESTART")
+    alert ("COOL LEMME RESTART");
     alert ("....restarting....");
     newGame();
   } else {
       alert ("AIIT");
-    };
+    }
 
  };
 

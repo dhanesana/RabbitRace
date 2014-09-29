@@ -1,7 +1,5 @@
 <script>
 
-// Insert game into a function
-
 // capitalize firt letter of a string. *credit stackoverflow*
   function capFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -37,7 +35,7 @@
   alert ("Select Race Type:");
   alert ("1) Dash: 100m Sprint");
   alert ("2) Pace: 200m Track");
-  alert ("3) Stamina: 300m Long and Boring")
+  alert ("3) Stamina: 300m Long Distance Race")
     var raceType = prompt ("Dash , Pace , or Stamina").toLowerCase();
     do {
         if (raceType == "dash" || raceType == "pace" || raceType == "stamina") break;  
@@ -65,7 +63,7 @@
     do {
       if (useName.length <= 9 && useName.length > 0) break;  
       alert ("Character Limit: 1-9 !!");
-      var useName = capFirst(prompt ("What's your name again? (Limit: 9 Characters)"));
+      var useName = prompt ("What's your name again? (Limit: 9 Characters)");
       if (useName.length <= 9 && useName.length > 0) break;      
       }
       while (useName.length > 9 || useName.length < 1);
@@ -80,7 +78,7 @@
     do {
       if (rabName.length <= 9 && rabName.length > 0) break;  
       alert ("Character Limit: 1-9 !!");
-      var rabName = capFirst(prompt ("Insert the name of your archnemesis"));
+      var useName = prompt ("What's your name again? (Limit: 9 Characters)");
       if (rabName.length <= 9 && rabName.length > 0) break;      
       }
       while (rabName.length > 9 || rabName.length < 1);
@@ -176,49 +174,18 @@
 
   // Simulate Race!
   var halfcourse = meters/2;
-  var iono = true
 
   while (rabbit.position < meters && turtle.position < meters) {
     rabbit.advance();
     turtle.advance();
-    while (iono && venue == "Desert") {
-      alert ("aaaaand we're off!");
-      alert (turtle.name + " : '" + " I wish there was air conditioning in this old shell... '");
-      alert (rabbit.name + " : '" + " Eat my dust! '");
-      iono = false;
-    }
-    while (iono && venue == "River Bank") {
-      alert ("aaaaand we're off!");
-      alert (turtle.name + " leaps in the river and takes off!");
-      iono = false;
-    }
-    // Alerts the contestants' individual progress
     alert (rabbit.progReport() + " | " + turtle.progReport());
-    // Different events depending on who reaches the halfway point first
-      while (iono && rabbit.position >= halfcourse && rabbit.position > turtle.position) {
-      turtle.speed += 3;
-      alert ("What do we have here?!...");
-      alert (".." + turtle.name + " IS TAKING OFF HIS SHELL!");
-      alert ("Cutscene: " + turtle.name + " takes off his shell and he's swole as hell");
-      alert (turtle.name + " : '" + " F*** THIS SHELL! I AIN'T LOSING '");
-      alert (turtle.name + " - Speed: " + turtle.speed);
-      iono = false;     
-    }
-      while (iono && turtle.position >= halfcourse && turtle.position > turtle.position) {
-      rabbit.focus += 3;
-      alert (turtle.name + " is across the halfway point!");
-      alert (rabbit.name + " : ' No way I'm losing to this chump! '");
-      alert (turtle.name + " - Focus: " + turtle.focus);
-      iono = false;
-    
+    if (turtle.position >= halfcourse) {
+        rabFocus += 3;
+        alert (rabFocus);
+        alert ("WAAAAAAAAOIAJOIAHOIJOIJOIHOIJOIJT!!!!!");
     }
   };
-/* - add sum more racers or sumn
 
- - mayb user entered racer parameters
 
- - mayb add particular types of distractors? could do this.isDistracted() cause of some rabDist or turtDist
 
- - change racer focus when they losing or winning maybe iono maybe add confidence lvl
- 
 </script>
